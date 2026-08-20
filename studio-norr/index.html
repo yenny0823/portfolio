@@ -1,55 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Norr | Creative Agency</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Norr — Design &amp; Brand Studio</title>
+<meta name="description" content="Studio Norr is a design and brand studio working from the north. Services, selected work, approach, and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">Studio Norr.</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <header id="home" class="hero">
-        <div class="hero-content reveal">
-            <h1>We craft digital experiences.</h1>
-            <p>Minimalist design meets powerful functionality.</p>
-            <a href="#work" class="btn">View Our Work</a>
+<div class="backlink">
+  <a href="../index.html#work">← Back to portfolio</a>
+</div>
+
+<header class="nav">
+  <a class="nav__mark" href="#top">NORR</a>
+  <nav class="nav__links">
+    <a href="#services"><span>Services</span></a>
+    <a href="#work"><span>Work</span></a>
+    <a href="#approach"><span>Approach</span></a>
+    <a href="#contact"><span>Contact</span></a>
+  </nav>
+  <span class="nav__coord">N 59.33° · E 18.07°</span>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__compass" aria-hidden="true">
+      <svg viewBox="0 0 120 120" id="compassSvg">
+        <circle cx="60" cy="60" r="58" class="compass__ring"/>
+        <circle cx="60" cy="60" r="42" class="compass__ring compass__ring--inner"/>
+        <g id="compassNeedle" class="compass__needle">
+          <path d="M60 14 L68 60 L60 106 L52 60 Z" />
+        </g>
+        <text x="60" y="12" class="compass__label" text-anchor="middle">N</text>
+      </svg>
+    </div>
+    <p class="eyebrow load-in" style="--d:0">Design &amp; brand studio, working from the north</p>
+    <h1 class="hero__title load-in" style="--d:1">Clarity finds<br>true north.</h1>
+    <p class="hero__lede load-in" style="--d:2">
+      Studio Norr partners with founders and product teams to design
+      brands and interfaces that hold up under real use — not just
+      the first screenshot.
+    </p>
+    <div class="hero__cta load-in" style="--d:3">
+      <a href="#work" class="btn btn--primary">See selected work</a>
+      <a href="#contact" class="btn btn--ghost">Start a project</a>
+    </div>
+    <div class="hero__scroll load-in" style="--d:4" aria-hidden="true">
+      <span></span>Scroll
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section__head reveal">
+      <p class="eyebrow">Services</p>
+      <h2>Four ways in, one studio</h2>
+    </div>
+    <div class="service-grid">
+      <article class="service reveal">
+        <svg class="service__icon" width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#2e5674" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="10"/><path d="M16 6v20M6 16h20"/></svg>
+        <h3>Brand Identity</h3>
+        <p>Naming, mark, and voice — built to hold up on a truck door
+        as well as a homepage.</p>
+      </article>
+      <article class="service reveal">
+        <svg class="service__icon" width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#2e5674" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="20" height="20" rx="2"/><path d="M6 13h20"/></svg>
+        <h3>Product &amp; Web Design</h3>
+        <p>Interfaces designed around what people are actually trying
+        to get done, not what looks good in a deck.</p>
+      </article>
+      <article class="service reveal">
+        <svg class="service__icon" width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#2e5674" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4l4 8 8 1-6 6 1.5 8L16 23l-7.5 4L10 19l-6-6 8-1z"/></svg>
+        <h3>Design Systems</h3>
+        <p>The rules a product runs on — components, tokens, and
+        documentation your team can actually maintain.</p>
+      </article>
+      <article class="service reveal">
+        <svg class="service__icon" width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#2e5674" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 8L4 16l7 8M21 8l7 8-7 8M18 6l-4 20"/></svg>
+        <h3>Front-end Build</h3>
+        <p>We stay through implementation and ship working code, not
+        just files handed off at the door.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section__head reveal">
+      <p class="eyebrow">Selected work</p>
+      <h2>Three studios. Three problems worth solving.</h2>
+    </div>
+
+    <div class="case-list">
+      <article class="case reveal">
+        <div class="case__visual" data-tilt style="background:#3b5166;"></div>
+        <div class="case__info">
+          <p class="case__client">Ferrum Coffee Roasters</p>
+          <h3>A roastery brand that reads as premium at 2 inches or 200 feet</h3>
+          <p class="case__desc">
+            Full identity and packaging system for a wholesale roaster,
+            built to survive scaling from farmers-market table to grocery
+            shelf without losing its handmade feel.
+          </p>
+          <div class="case__stats">
+            <div><span class="stat" data-value="64" data-suffix="%" data-prefix="+">0%</span><small>wholesale inquiries, 6 mo.</small></div>
+            <div><span class="stat" data-value="12" data-suffix="">0</span><small>retail SKUs launched</small></div>
+          </div>
         </div>
-    </header>
+      </article>
 
-    <section id="work" class="services">
-        <h2 class="reveal">What We Do</h2>
-        <div class="grid">
-            <div class="card reveal">
-                <h3>Branding</h3>
-                <p>Creating identities that resonate and stand the test of time.</p>
-            </div>
-            <div class="card reveal">
-                <h3>Web Design</h3>
-                <p>Responsive, engaging, and beautiful digital storefronts.</p>
-            </div>
-            <div class="card reveal">
-                <h3>Motion</h3>
-                <p>Bringing static ideas to life with fluid animations.</p>
-            </div>
+      <article class="case reveal">
+        <div class="case__visual" data-tilt style="background:#6b5339;"></div>
+        <div class="case__info">
+          <p class="case__client">Havn Logistics</p>
+          <h3>Turning a shipment tracker into something dispatchers trust</h3>
+          <p class="case__desc">
+            Redesigned the core operations dashboard used by 40+ daily
+            dispatchers — cut average task time and reduced training
+            time for new hires.
+          </p>
+          <div class="case__stats">
+            <div><span class="stat" data-value="38" data-suffix="%" data-prefix="-">0%</span><small>avg. task completion time</small></div>
+            <div><span>2 days</span><small>new-hire ramp, down from 9</small></div>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <footer id="contact">
-        <div class="footer-content reveal">
-            <h2>Let's build something together.</h2>
-            <a href="mailto:hello@studionorr.demo" class="btn btn-outline">Get in Touch</a>
-            <p class="copyright">&copy; 2026 Studio Norr. All rights reserved.</p>
+      <article class="case reveal">
+        <div class="case__visual" data-tilt style="background:#3f4a3d;"></div>
+        <div class="case__info">
+          <p class="case__client">Almanac Books</p>
+          <h3>An independent publisher's storefront, built to sell backlist</h3>
+          <p class="case__desc">
+            Editorial-first e-commerce site designed to keep older titles
+            discoverable rather than buried under new releases.
+          </p>
+          <div class="case__stats">
+            <div><span>2.1x</span><small>backlist sales, 90 days</small></div>
+            <div><span>1.9s</span><small>median load time</small></div>
+          </div>
         </div>
-    </footer>
+      </article>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section__head reveal">
+      <p class="eyebrow">In their words</p>
+      <h2>What it's like to work with us</h2>
+    </div>
+    <div class="quote-carousel reveal" id="quoteCarousel">
+      <div class="quote-track" id="quoteTrack">
+        <blockquote class="quote is-active">
+          <p>Norr didn't just make us look premium — they figured out
+          why we weren't converting wholesale buyers, then fixed that.</p>
+          <cite>Elin Voss, Founder — Ferrum Coffee Roasters</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p>Our dispatchers stopped complaining about the software
+          within a week. That's never happened before.</p>
+          <cite>Marcus Reyes, Ops Lead — Havn Logistics</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p>They treated our backlist like it mattered as much as new
+          releases. Sales agreed with them.</p>
+          <cite>Priya Nandan, Founder — Almanac Books</cite>
+        </blockquote>
+      </div>
+      <div class="quote-dots" id="quoteDots" role="tablist" aria-label="Testimonials"></div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach" id="approach">
+    <div class="section__head reveal">
+      <p class="eyebrow">Approach</p>
+      <h2>How a project moves</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="step__num">01</span>
+        <h3>Discover</h3>
+        <p>Two weeks with your team, your users, and your data — before
+        a single pixel moves. We leave with a brief we'd both defend.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step__num">02</span>
+        <h3>Design</h3>
+        <p>Systems before screens. We build the rules the product runs
+        on, then design inside them — so nothing here is one-off.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step__num">03</span>
+        <h3>Ship</h3>
+        <p>We stay through implementation. A design that never ships
+        isn't a finished one — we hand off working code, not just files.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact__inner reveal">
+      <p class="eyebrow">Start a project</p>
+      <h2>Tell us where you're headed.</h2>
+      <a class="contact__email" href="mailto:hello@studionorr.com">hello@studionorr.com</a>
+      <p class="contact__note">Based in the north. Working everywhere, on
+      video calls with your camera off if you prefer it that way.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Studio Norr. Sample project — part of a developer portfolio.</p>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<script src="script.js"></script>
 </body>
 </html>
