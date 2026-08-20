@@ -15,6 +15,7 @@
   --font-mono: 'IBM Plex Mono', monospace;
 
   --max: 1100px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * { box-sizing: border-box; }
@@ -61,9 +62,7 @@ a:focus-visible, button:focus-visible {
 /* ============================================
    BACKLINK
    ============================================ */
-.backlink {
-  padding: 0.9rem clamp(1.25rem, 4vw, 3rem) 0;
-}
+.backlink { padding: 0.9rem clamp(1.25rem, 4vw, 3rem) 0; }
 .backlink a {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -73,7 +72,7 @@ a:focus-visible, button:focus-visible {
 .backlink a:hover { color: var(--accent); }
 
 /* ============================================
-   NAV
+   NAV — sliding underline on hover
    ============================================ */
 .nav {
   display: flex;
@@ -83,21 +82,28 @@ a:focus-visible, button:focus-visible {
   border-bottom: 1px solid var(--line);
 }
 
-.nav__mark {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  letter-spacing: 0.02em;
-}
+.nav__mark { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 0.02em; }
 
 .nav__links { display: flex; gap: 2rem; font-size: 0.9rem; }
-.nav__links a { color: var(--ink-soft); transition: color 0.15s ease; }
-.nav__links a:hover, .nav__links a:focus-visible { color: var(--ink); }
-
-.nav__coord {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.nav__links a {
+  position: relative;
   color: var(--ink-soft);
+  padding-bottom: 2px;
 }
+.nav__links a span { position: relative; }
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: right 0.25s var(--ease);
+}
+.nav__links a:hover, .nav__links a:focus-visible { color: var(--ink); }
+.nav__links a:hover::after, .nav__links a:focus-visible::after { right: 0; }
+
+.nav__coord { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); }
 
 @media (max-width: 640px) {
   .nav__links, .nav__coord { display: none; }
@@ -106,7 +112,7 @@ a:focus-visible, button:focus-visible {
 /* ============================================
    LAYOUT
    ============================================ */
-.hero, .work, .approach, .contact {
+.hero, .services, .work, .testimonials, .approach, .contact {
   max-width: var(--max);
   margin: 0 auto;
   padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem);
@@ -116,17 +122,20 @@ a:focus-visible, button:focus-visible {
 .section__head h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); }
 
 /* ============================================
-   HERO + COMPASS SIGNATURE
+   HERO + COMPASS SIGNATURE + LOAD-IN
    ============================================ */
-.hero { position: relative; padding-top: clamp(3.5rem, 9vw, 7rem); }
+.hero { position: relative; padding-top: clamp(3.5rem, 9vw, 7rem); overflow: hidden; }
 
 .hero__compass {
   position: absolute;
   top: clamp(2rem, 8vw, 4rem);
   right: clamp(1rem, 4vw, 3rem);
   width: clamp(70px, 12vw, 120px);
-  opacity: 0.9;
+  opacity: 0;
+  animation: compassIn 0.9s var(--ease) 0.3s forwards;
 }
+@keyframes compassIn { from { opacity: 0; transform: scale(0.85) rotate(-8deg); } to { opacity: 0.9; transform: scale(1) rotate(0); } }
+
 .compass__ring { fill: none; stroke: var(--ink-soft); stroke-width: 1; opacity: 0.35; }
 .compass__ring--inner { opacity: 0.2; }
 .compass__label { font-family: var(--font-mono); font-size: 9px; fill: var(--ink-soft); }
@@ -134,21 +143,48 @@ a:focus-visible, button:focus-visible {
   transform-origin: 60px 60px;
   fill: var(--accent-warm);
   transition: transform 0.15s ease-out;
+  animation: idleDrift 7s ease-in-out infinite;
+}
+@keyframes idleDrift {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
 }
 
-.hero__title {
-  font-size: clamp(2.6rem, 7vw, 5rem);
-  max-width: 12ch;
-  margin-bottom: 1.1rem;
+.load-in {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: loadIn 0.7s var(--ease) forwards;
+  animation-delay: calc(var(--d) * 0.1s + 0.1s);
 }
+@keyframes loadIn { to { opacity: 1; transform: translateY(0); } }
 
-.hero__lede {
-  max-width: 44ch;
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-}
-
+.hero__title { font-size: clamp(2.6rem, 7vw, 5rem); max-width: 12ch; margin-bottom: 1.1rem; }
+.hero__lede { max-width: 44ch; color: var(--ink-soft); font-size: 1.05rem; }
 .hero__cta { display: flex; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap; }
+
+.hero__scroll {
+  margin-top: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+}
+.hero__scroll span {
+  width: 1px; height: 22px;
+  background: var(--ink-soft);
+  position: relative;
+  overflow: hidden;
+}
+.hero__scroll span::after {
+  content: "";
+  position: absolute;
+  top: -100%; left: 0; right: 0; height: 100%;
+  background: var(--accent-warm);
+  animation: scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine { 50% { top: 100%; } 100% { top: 100%; } }
 
 .btn {
   font-family: var(--font-body);
@@ -156,19 +192,53 @@ a:focus-visible, button:focus-visible {
   font-size: 0.92rem;
   padding: 0.8em 1.5em;
   border: 1px solid transparent;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   display: inline-block;
 }
 .btn:hover { transform: translateY(-1px); }
-
 .btn--primary { background: var(--ink); color: var(--bg); }
 .btn--primary:hover { background: var(--accent); }
-
 .btn--ghost { border-color: var(--line); color: var(--ink); }
 .btn--ghost:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
 
 /* ============================================
-   WORK / CASE STUDIES
+   SERVICES
+   ============================================ */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+}
+.service {
+  background: var(--bg);
+  padding: 2rem 1.75rem;
+  transition: background 0.25s ease;
+}
+.service:hover { background: var(--bg-raised); }
+.service__icon {
+  width: 30px; height: 30px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 1.1rem;
+  transition: transform 0.3s var(--ease), stroke 0.25s ease;
+}
+.service:hover .service__icon { transform: translateY(-3px) rotate(-4deg); stroke: var(--accent-warm); }
+.service h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.5rem; }
+.service p { color: var(--ink-soft); font-size: 0.88rem; }
+
+@media (max-width: 900px) {
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .service-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   WORK / CASE STUDIES — tilt on hover
    ============================================ */
 .case-list { display: flex; flex-direction: column; gap: 1px; background: var(--line); }
 
@@ -183,6 +253,9 @@ a:focus-visible, button:focus-visible {
 .case__visual {
   min-height: 220px;
   align-self: stretch;
+  transition: transform 0.1s linear;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .case__info { padding-right: 1rem; }
@@ -194,12 +267,7 @@ a:focus-visible, button:focus-visible {
   color: var(--ink-soft);
   margin-bottom: 0.6em;
 }
-.case__info h3 {
-  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-  max-width: 24ch;
-}
+.case__info h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); font-weight: 500; margin-bottom: 0.75rem; max-width: 24ch; }
 .case__desc { color: var(--ink-soft); max-width: 46ch; }
 
 .case__stats { display: flex; gap: 2rem; margin-top: 1.25rem; }
@@ -208,6 +276,7 @@ a:focus-visible, button:focus-visible {
   font-family: var(--font-display);
   font-size: 1.5rem;
   color: var(--accent);
+  font-variant-numeric: tabular-nums;
 }
 .case__stats small {
   font-family: var(--font-mono);
@@ -222,20 +291,53 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ============================================
-   APPROACH
+   TESTIMONIALS — fading carousel
    ============================================ */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+.quote-carousel { max-width: 62ch; }
+.quote-track { position: relative; min-height: 9.5rem; }
+.quote {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  pointer-events: none;
 }
-.step__num {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent-warm);
-  display: block;
+.quote.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.quote p {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.6vw, 1.55rem);
+  font-weight: 400;
+  color: var(--ink);
   margin-bottom: 1rem;
 }
+.quote cite {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+.quote-dots { display: flex; gap: 0.6rem; margin-top: 2rem; }
+.quote-dots button {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-soft);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.quote-dots button.is-active { background: var(--accent-warm); border-color: var(--accent-warm); transform: scale(1.15); }
+
+/* ============================================
+   APPROACH
+   ============================================ */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.step__num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-warm); display: block; margin-bottom: 1rem; }
 .step h3 { font-size: 1.2rem; margin-bottom: 0.6rem; font-weight: 500; }
 .step p { color: var(--ink-soft); font-size: 0.94rem; }
 
@@ -256,23 +358,41 @@ a:focus-visible, button:focus-visible {
   border-bottom: 1px solid var(--line);
   display: inline-block;
   margin-bottom: 1.25rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
-.contact__email:hover { border-color: var(--accent); }
+.contact__email:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
 .contact__note { color: var(--ink-soft); font-size: 0.9rem; }
 
 /* ============================================
    FOOTER
    ============================================ */
-.footer {
-  text-align: center;
-  padding: 2rem 1.25rem 3rem;
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  font-family: var(--font-mono);
-}
+.footer { text-align: center; padding: 2rem 1.25rem 3rem; font-size: 0.78rem; color: var(--ink-soft); font-family: var(--font-mono); }
 
 /* ============================================
-   SCROLL REVEAL
+   BACK TO TOP
    ============================================ */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.to-top {
+  position: fixed;
+  right: clamp(1rem, 4vw, 2rem);
+  bottom: clamp(1rem, 4vw, 2rem);
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  color: var(--ink);
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s ease;
+  z-index: 20;
+}
+.to-top.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.to-top:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
+
+/* ============================================
+   SCROLL REVEAL — staggers via inline --i on children
+   ============================================ */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); transition-delay: calc(var(--i, 0) * 0.08s); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
