@@ -25,7 +25,7 @@ const PROJECTS = [
     description: "Marketing site and case-study system for a design agency, built with a custom CMS-driven layout.",
     tags: ["Figma", "React", "Sanity CMS"],
     liveUrl: "https://yenny0823.github.io/portfolio/studio-norr/",
-    codeUrl: "https://github.com/yenny0823/portfolio/studio-norr",
+    codeUrl: "https://github.com/yenny0823/portfolio/tree/3a5c8009ad4aeed21dea76d64840c671afba42e7/studio-norr",
     thumbHue: "#dcd6cf"
   },
   {
