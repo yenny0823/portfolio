@@ -24,7 +24,7 @@ const PROJECTS = [
     url: "studionorr.com",
     description: "Marketing site and case-study system for a design agency, built with a custom CMS-driven layout.",
     tags: ["Figma", "React", "Sanity CMS"],
-    liveUrl: "#",
+    liveUrl: "https://yenny0823.github.io/portfolio/studio-norr/",
     codeUrl: "https://github.com/yenny0823/portfolio/studio-norr",
     thumbHue: "#dcd6cf"
   },
