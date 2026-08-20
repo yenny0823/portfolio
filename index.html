@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chainne Enario — Web Developer</title>
+<meta name="description" content="Portfolio of Chainne Enario, detail-focused web developer. Selected projects, skills, and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="nav" id="top">
+  <a class="nav__mark" href="#top">[ CE ]</a>
+  <nav class="nav__links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="nav__resume" href="#" target="_blank" rel="noopener">Résumé ↗</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="browser-frame hero__frame">
+      <div class="browser-frame__bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="browser-frame__url">chainneenario.dev</span>
+      </div>
+      <div class="browser-frame__body hero__body">
+        <p class="eyebrow">Web Developer</p>
+        <h1 class="hero__title">
+          I build the page,<br> then make sure everyone can use it.
+        </h1>
+        <p class="hero__type">
+          <span id="typed"></span><span class="caret">&nbsp;</span>
+        </p>
+        <p class="hero__lede">
+          I turn a client's goals into a working, accessible site — from
+          first build to launch — with the same precision I bring to
+          every detail along the way.
+        </p>
+        <div class="hero__cta">
+          <a href="#work" class="btn btn--primary">See the work</a>
+          <a href="#contact" class="btn btn--ghost">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section__head reveal">
+      <p class="eyebrow">Selected work</p>
+      <h2>Things I've shipped</h2>
+    </div>
+
+    <div class="grid" id="projectGrid">
+      <!-- Project cards are injected by script.js from the PROJECTS array.
+           Edit that array to swap in your real projects. -->
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about__grid reveal">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Precision, end to end</h2>
+        <p>
+          I'm a detail-focused web developer who works directly with
+          clients, end to end, with minimal supervision. My most recent
+          build added dark mode, adjustable text sizing, and a
+          dyslexia-friendly font — accessibility features shaped by how
+          people actually use the site, not just how it looks.
+        </p>
+        <p>
+          Based in the Philippines · Fluent in English and Cebuano ·
+          Open to remote freelance and long-term roles.
+        </p>
+      </div>
+      <div class="skills">
+        <div class="skills__group">
+          <h3>Development</h3>
+          <ul class="tag-list">
+            <li>HTML/CSS</li>
+            <li>JavaScript</li>
+            <li>Accessibility (WCAG-minded)</li>
+            <li>Git &amp; GitHub</li>
+            <li>Troubleshooting</li>
+          </ul>
+        </div>
+        <div class="skills__group">
+          <h3>Also brings</h3>
+          <ul class="tag-list">
+            <li>Research &amp; analysis</li>
+            <li>Data entry &amp; QA</li>
+            <li>Client communication</li>
+            <li>Independent project management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="browser-frame contact__frame">
+      <div class="browser-frame__bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="browser-frame__url">chainneenario.dev/contact</span>
+      </div>
+      <div class="browser-frame__body contact__body">
+        <h2>Let's build something.</h2>
+        <p>Have a project, a role, or just a question? Say hello.</p>
+        <a class="contact__email" href="mailto:enariochainne@gmail.com">enariochainne@gmail.com</a>
+        <div class="contact__links">
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Chainne Enario. Built with HTML, CSS &amp; JS — hosted on GitHub Pages.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
