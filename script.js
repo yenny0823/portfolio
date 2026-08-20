@@ -25,7 +25,7 @@ const PROJECTS = [
     description: "Marketing site and case-study system for a design agency, built with a custom CMS-driven layout.",
     tags: ["Figma", "React", "Sanity CMS"],
     liveUrl: "#",
-    codeUrl: "https://github.com/yourusername/studio-norr",
+    codeUrl: "https://github.com/yenny0823/studio-norr",
     thumbHue: "#dcd6cf"
   },
   {
@@ -34,7 +34,7 @@ const PROJECTS = [
     description: "Data dashboard for field researchers, with offline-first sync and accessible chart components.",
     tags: ["TypeScript", "D3.js", "Node.js"],
     liveUrl: "#",
-    codeUrl: "https://github.com/yourusername/fielddata",
+    codeUrl: "https://github.com/yenny0823/fielddata",
     thumbHue: "#d9d2c3"
   },
   {
@@ -43,7 +43,7 @@ const PROJECTS = [
     description: "Headless storefront for a ceramics studio: product configurator, cart, and checkout flow.",
     tags: ["Next.js", "Stripe", "Design system"],
     liveUrl: "#",
-    codeUrl: "https://github.com/yourusername/loam-store",
+    codeUrl: "https://github.com/yenny0823/loam-store",
     thumbHue: "#cfd6de"
   },
   {
@@ -52,7 +52,7 @@ const PROJECTS = [
     description: "Product landing page for a focus-timer app, with a hand-built scroll-triggered demo animation.",
     tags: ["HTML/CSS", "JavaScript", "GSAP"],
     liveUrl: "#",
-    codeUrl: "https://github.com/yourusername/quietwork",
+    codeUrl: "https://github.com/yenny0823/quietwork",
     thumbHue: "#e0d6ce"
   }
 ];
